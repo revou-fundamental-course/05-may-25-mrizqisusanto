@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelLead - Your Trusted Travel Agency</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="#home">TravelLead</a>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <ul>
+                        <li><a href="#home" class="active">Home</a></li>
+                        <li><a href="#packages">Our Packages</a></li>
+                        <li><a href="#contact">Call Us</a></li>
+                    </ul>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="banner">
+        <div class="slider">
+            <div class="slide active">
+                <img src="../img/beach.jpg" alt="Beautiful beach destination">
+                <div class="slide-content">
+                    <h1>Your Trusted Travel Agent's</h1>
+                    <p>Your happiness is our happiness</p>
+                    <a href="#" class="btn">Plan Your Trip</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="../img/mountain.jpg" alt="Mountain destination">
+                <div class="slide-content">
+                    <h1>Discover the World</h1>
+                    <p>Unforgettable experiences await you</p>
+                    <a href="#" class="btn">Plan Your Trip</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="../img/city.jpg" alt="City destination">
+                <div class="slide-content">
+                    <h1>Adventure Awaits</h1>
+                    <p>Create memories that last a lifetime</p>
+                    <a href="#" class="btn">Plan Your Trip</a>
+                </div>
+            </div>
+            <div class="controls">
+                <div class="prev"><span>&lt;</span></div>
+                <div class="next"><span>&gt;</span></div>
+            </div>
+            <div class="indicator"></div>
+        </div>
+    </section>
+    <script>
+        const slides = document.querySelectorAll(".slide");
+        const next = document.querySelector(".next");
+        const prev = document.querySelector(".prev");
+        let index = 0;
+    
+        function showSlide(i) {
+          slides.forEach((slide, idx) => {
+            slide.classList.remove("active");
+            if (idx === i) slide.classList.add("active");
+          });
+        }
+    
+        next.addEventListener("click", () => {
+          index = (index + 1) % slides.length;
+          showSlide(index);
+        });
+    
+        prev.addEventListener("click", () => {
+          index = (index - 1 + slides.length) % slides.length;
+          showSlide(index);
+        });
+    
+        setInterval(() => {
+          index = (index + 1) % slides.length;
+          showSlide(index);
+        }, 5000);
+      </script>
+
+    <section class="about">
+        <div class="container">
+            <div class="grid">
+                <div class="image-column">
+                    <div class="image-holder">
+                        <img src="../img/trip.jpg" alt="Travel experience">
+                    </div>
+                </div>
+                <div class="content-column">
+                    <div class="quote">
+                        <p>"Vacation becomes fun with TravelLead."</p>
+                    </div>
+                    <div class="profile">
+                        <div class="profile-pic">
+                            <img src="../img/profil.jpg" alt="muhamadrizqisusanto">
+                        </div>
+                        <div class="profile-info">
+                            <h4>Muhamad Rizqi Susanto</h4>
+                            <p>Mahasiswa, 23</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="benefits">
+                        <h3>Why Choose Us</h3>
+                        <ul>
+                            <li>
+                                <span>1</span>
+                                <p>Personalized travel itineraries tailored to your preferences and budget.</p>
+                            </li>
+                            <li>
+                                <span>2</span>
+                                <p>24/7 customer support throughout your journey for peace of mind.</p>
+                            </li>
+                            <li>
+                                <span>3</span>
+                                <p>Exclusive deals and hidden gems that you won't find anywhere else.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-container" id="contact">
+                <div class="form-wrapper">
+                    <h2>Contact Us</h2>
+                    <p>Ready to contact you within 24 hours after we receive your data.</p>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name:</label>
+                            <input type="text" id="name" placeholder="First and last name" required>
+                            <span class="error" id="nameError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input type="email" id="email" placeholder="example@email.com" required>
+                            <span class="error" id="emailError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="destination">What are you interested in?</label>
+                            <div class="select-wrapper">
+                                <select id="destination" required>
+                                    <option value="" disabled selected>Select option</option>
+                                    <option value="bali">Bali</option>
+                                    <option value="japan">Japan</option>
+                                    <option value="singapore">Singapore</option>
+                                    <option value="bandung">Bandung</option>
+                                    <option value="surabaya">Surabaya</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <span class="error" id="destinationError"></span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-dark">SEND</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages" class="packages">
+        <div class="container">
+            <h2>Our Packages</h2>
+            <div class="package-grid">
+                <div class="package-card">
+                    <div class="package-icon">
+                        <span>⛱️</span>
+                    </div>
+                    <h3>Bali</h3>
+                    <p>Enjoy the tropical paradise of Bali with its stunning beaches, rich culture, and relaxing atmosphere.</p>
+                    <a href="#contact" class="btn-outline">Book Now</a>
+                </div>
+                <div class="package-card">
+                    <div class="package-icon">
+                        <span>🗾</span>
+                    </div>
+                    <h3>Japan</h3>
+                    <p>Experience the perfect blend of ancient tradition and cutting-edge technology in the Land of the Rising Sun.</p>
+                    <a href="#contact" class="btn-outline">Book Now</a>
+                </div>
+                <div class="package-card">
+                    <div class="package-icon">
+                        <span>🇸🇬</span>
+                    </div>
+                    <h3>Singapore</h3>
+                    <p>Discover a futuristic city filled with iconic attractions like Marina Bay Sands and Gardens by the Bay.</p>
+                    <a href="#contact" class="btn-outline">Book Now</a>
+                </div>
+                <div class="package-card">
+                    <div class="package-icon">
+                        <span>🏞️</span>
+                    </div>
+                    <h3>Bandung</h3>
+                    <p>Escape to the cool city of Bandung for scenic nature spots, local fashion, and delicious Sundanese cuisine.</p>
+                    <a href="#contact" class="btn-outline">Book Now</a>
+                </div>
+                <div class="package-card">
+                    <div class="package-icon">
+                        <span>🏙️</span>
+                    </div>
+                    <h3>Surabaya</h3>
+                    <p>Explore the vibrant city of Surabaya, where rich history meets urban charm and flavorful street food.</p>
+                    <a href="#contact" class="btn-outline">Book Now</a>
+                </div>
+                <div class="package-card">
+                    <div class="package-icon">
+                        <span>✈️</span>
+                    </div>
+                    <h3>Custom Trip</h3>
+                    <p>Design your dream vacation, tailored to your preferences, with the freedom to explore what you truly love.</p>
+                    <a href="#contact" class="btn-outline">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Your Dream Vacation is Just a Click Away</h2>
+            <p>From tropical beaches to bustling cities, we bring you curated travel experiences that suit your dreams and your budget.</p>
+            <a href="#contact" class="btn btn-light">PLAN YOUR TRIP NOW</a>
+        </div>
+    </section>
+    <script>
+
+        var sidemenu = document.getElementById("sidemenu");
+        
+        function openmenu(){
+            sidemenu.style.right = "0";
+        }
+        function closemenu(){
+            sidemenu.style.right = "-200px";
+        }
+        
+        </script>
+        
+    <footer>
+        <div class="container">
+            <div class="logo">TravelLead</div>
+            <div class="footer-links">
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="copyright">
+                © 2025 - TravelLead
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
